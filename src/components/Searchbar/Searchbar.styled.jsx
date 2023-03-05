@@ -1,7 +1,7 @@
 import styled from '@emotion/styled';
 import { Form, Field } from 'formik';
 
-export const Header = styled.header`
+export const SearchBar = styled.header`
   top: 0;
   left: 0;
   position: sticky;
@@ -20,7 +20,7 @@ export const Header = styled.header`
     0px 4px 5px 0px rgba(0, 0, 0, 0.14), 0px 1px 10px 0px rgba(0, 0, 0, 0.12);
 `;
 
-export const FormWrap = styled(Form)`
+export const SearchForm = styled(Form)`
   display: flex;
   align-items: center;
   width: 100%;
@@ -30,23 +30,7 @@ export const FormWrap = styled(Form)`
   overflow: hidden;
 `;
 
-export const Input = styled(Field)`
-  display: inline-block;
-  width: 100%;
-  font: inherit;
-  font-size: 20px;
-  border: none;
-  outline: none;
-  padding-left: 4px;
-  padding-right: 4px;
-
-  &::placeholder {
-    font: inherit;
-    font-size: 18px;
-  }
-`;
-
-export const FormBtn = styled.button`
+export const SearchFormBtn = styled.button`
   display: inline-block;
   width: 48px;
   height: 48px;
@@ -59,5 +43,31 @@ export const FormBtn = styled.button`
 
   &:hover {
     opacity: 1;
+  }
+`;
+export const SearchFormBtnLabel = styled.span`
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  clip-path: inset(50%);
+  border: 0;
+`;
+export const Input = styled(Field)`
+  display: inline-block;
+  width: 100%;
+  font: inherit;
+  font-size: 20px;
+  border: none;
+  outline: none;
+  padding-left: 50px;
+  padding-right: 50px;
+
+  &::placeholder {
+    font: inherit;
+    font-size: 18px;
   }
 `;

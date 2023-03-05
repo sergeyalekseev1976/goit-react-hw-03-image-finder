@@ -2,7 +2,13 @@ import { Formik } from 'formik';
 import PropTypes from 'prop-types';
 import toast, { Toaster } from 'react-hot-toast';
 import { BsSearch } from 'react-icons/bs';
-import { Header, FormWrap, Input, FormBtn } from './Searchbar.styled';
+import {
+  SearchBar,
+  SearchForm,
+  SearchFormBtn,
+  SearchFormBtnLabel,
+  Input,
+} from './Searchbar.styled';
 
 const initialValues = {
   query: '',
@@ -19,13 +25,14 @@ export const Searchbar = ({ onSubmit, isSubmiting }) => {
   };
 
   return (
-    <Header>
+    <SearchBar>
       <Toaster position="top-right" reverseOrder={false} />
       <Formik initialValues={initialValues} onSubmit={handleSubmit}>
-        <FormWrap>
-          <FormBtn type="submit" disabled={isSubmiting}>
-            <BsSearch size="1.5em" />
-          </FormBtn>
+        <SearchForm>
+          <SearchFormBtn type="submit" disabled={isSubmiting}>
+            <BsSearch size="20px" />
+            <SearchFormBtnLabel>Search</SearchFormBtnLabel>
+          </SearchFormBtn>
           <Input
             type="text"
             name="query"
@@ -33,9 +40,9 @@ export const Searchbar = ({ onSubmit, isSubmiting }) => {
             autoFocus
             placeholder="Search images and photos"
           />
-        </FormWrap>
+        </SearchForm>
       </Formik>
-    </Header>
+    </SearchBar>
   );
 };
 
