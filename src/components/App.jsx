@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Searchbar } from './Searchbar/Searchbar';
 import { ImageGallery } from './ImageGallery/ImageGallery';
-import { getImages } from 'api/api';
+import { getImages, PER_PAGE } from 'api/api';
 import { Container } from './App.styled';
 import toast, { Toaster } from 'react-hot-toast';
 import { LoadMoreBtn } from './Button/Button';
@@ -13,7 +13,7 @@ export class App extends Component {
     query: '',
     items: [],
     isLoading: false,
-    imagesFound: null,
+    imagesFound: 0,
   };
 
   async componentDidUpdate(_, prevState) {
@@ -46,7 +46,7 @@ export class App extends Component {
         page: 1,
         query,
         items: [],
-        imagesFound: null,
+        imagesFound: 0,
       }));
     }
   };
@@ -64,9 +64,11 @@ export class App extends Component {
         <Toaster position="top-right" reverseOrder={false} />
         <Searchbar onSubmit={this.handleSearch} isSubmiting={isLoading} />
         {items.length > 0 && <ImageGallery items={items} />}
-        {isLoading && <Loader />}
 
-        {imagesFound === 12 && <LoadMoreBtn onClick={this.loadMore} />}
+        {imagesFound === PER_PAGE && !isLoading && (
+          <LoadMoreBtn onClick={this.loadMore} />
+        )}
+        {isLoading && <Loader />}
       </Container>
     );
   }
